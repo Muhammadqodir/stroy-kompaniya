@@ -1,3 +1,8 @@
+<?php
+require "admin/db_helper.php";
+
+$db = new DBHelper();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,8 +22,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Rubik:wght@500;600;700&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
@@ -56,35 +60,15 @@
             <div class="col-lg-6 text-end">
                 <div class="h-100 topbar-right d-inline-flex align-items-center text-white py-2 px-5">
                     <span class="fs-5 fw-bold me-2"><i class="fa fa-phone-alt me-2"></i>Тел:</span>
-                    <span class="fs-5 fw-bold">+7 968 265 90 13</span>
+                    <span class="fs-5 fw-bold"><?php echo $db->getField("phone") ?></span>
                 </div>
             </div>
         </div>
     </div>
     <!-- Topbar End -->
 
-
-    <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top py-0 pe-5">
-        <a href="index.html" class="navbar-brand ps-5 me-0">
-            <h2 class="text-white m-0">СтройКомпания</h2>
-        </a>
-        <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link active">Главная</a>
-                <a href="index.html" class="nav-item nav-link">Бытовки</a>
-                <a href="index.html" class="nav-item nav-link">Хозблоки</a>
-                <a href="index.html" class="nav-item nav-link">Душ и туалет</a>
-
-                <a href="contact.html" class="nav-item nav-link">Отзывы</a>
-            </div>
-            <a href="" class="btn btn-primary px-3 d-none d-lg-block">Перезвонить</a>
-        </div>
-    </nav>
-    <!-- Navbar End -->
+    
+  <?php include("nav.php") ?>
 
 
     <!-- Carousel Start -->
@@ -185,7 +169,7 @@
                                 </div>
                                 <div class="ms-3">
                                     <p class="mb-2">Свяжитесь с нами</p>
-                                    <h5 class="mb-0">+7 968 265 90 12</h5>
+                                    <h5 class="mb-0"><?php echo $db->getField("phone") ?></h5>
                                 </div>
                             </div>
                         </div>
@@ -316,70 +300,30 @@
                 <p class="fw-medium text-uppercase text-primary mb-2">Наши сервисы</p>
                 <h1 class="display-5 mb-4">Мы предоставляем лучшие промышленные услуги</h1>
             </div>
-            <div class="row gy-5 gx-4">
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item">
-                        <img class="img-fluid img_category" src="https://stroyderevo-91.ru/wp-content/uploads/2018/07/%D1%85%D0%BE%D0%B7%D0%B1%D0%BB%D0%BE%D0%BA-.jpg" alt="">
-                        <div class="service-img">
-                            <img class="img-fluid" src="https://stroyderevo-91.ru/wp-content/uploads/2018/07/%D1%85%D0%BE%D0%B7%D0%B1%D0%BB%D0%BE%D0%BA-.jpg" alt="">
-                        </div>
-                        <div class="service-detail">
-                            <div class="service-title">
-                                <hr class="w-25">
-                                <h3 class="mb-0">Хозблоки</h3>
-                                <hr class="w-25">
+            <div class="row gy-5 gx-4 justify-content-center">
+                <?php foreach ($db->getAllServices() as $item) : ?>
+                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="service-item">
+                            <img class="img-fluid img_category" src="<?php echo $item["pic"] ?>" alt="">
+                            <div class="service-img">
+                                <img class="img-fluid" src="<?php echo $item["pic"] ?>" alt="">
                             </div>
-                            <div class="service-text">
-                                <p class="text-white">
-                                    ВЫГОДА до 15%.Звоните!
-                                </p>
+                            <div class="service-detail">
+                                <div class="service-title">
+                                    <hr class="w-25">
+                                    <h3 class="mb-0"><?php echo $item["name"] ?></h3>
+                                    <hr class="w-25">
+                                </div>
+                                <div class="service-text">
+                                    <p class="text-white">
+                                        <?php echo $item["description"] ?>
+                                    </p>
+                                </div>
                             </div>
+                            <a class="btn btn-light" href="catalog.php?category=<?php echo $item["id"] ?>">Посмотреть</a>
                         </div>
-                        <a class="btn btn-light" href="">Посмотреть</a>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item">
-                        <img class="img-fluid img_category" src="https://proektlife.ru/wp-content/uploads/2016/01/21.jpg" alt="">
-                        <div class="service-img">
-                            <img class="img-fluid" src="https://proektlife.ru/wp-content/uploads/2016/01/21.jpg" alt="">
-                        </div>
-                        <div class="service-detail">
-                            <div class="service-title">
-                                <hr class="w-25">
-                                <h3 class="mb-0">Бытовки</h3>
-                                <hr class="w-25">
-                            </div>
-                            <div class="service-text">
-                                <p class="text-white mb-0">
-                                    ВЫГОДА до 15%.Звоните!
-                                </p>
-                            </div>
-                        </div>
-                        <a class="btn btn-light" href="">Посмотреть</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item">
-                        <img class="img-fluid img_category" src="https://thumb.tildacdn.com/tild6435-6664-4735-b263-343731626266/-/cover/720x700/center/center/-/format/webp/1634243520_68-p-dach.jpg" alt="">
-                        <div class="service-img">
-                            <img class="img-fluid" src="https://thumb.tildacdn.com/tild6435-6664-4735-b263-343731626266/-/cover/720x700/center/center/-/format/webp/1634243520_68-p-dach.jpg" alt="">
-                        </div>
-                        <div class="service-detail">
-                            <div class="service-title">
-                                <hr class="w-25">
-                                <h3 class="mb-0">Душ и туалет</h3>
-                                <hr class="w-25">
-                            </div>
-                            <div class="service-text">
-                                <p class="text-white mb-0">
-                                    ВЫГОДА до 15%.Звоните!
-                                </p>
-                            </div>
-                        </div>
-                        <a class="btn btn-light" href="">Посмотреть</a>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>
@@ -433,61 +377,6 @@
     </div> -->
     <!-- Project End -->
 
-    <!-- Testimonial Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <p class="fw-medium text-uppercase text-primary mb-2">Оцзывы</p>
-                <h1 class="display-5 mb-5">Что говорят клиенты о нас</h1>
-            </div>
-            <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-                <div class="testimonial-item text-center">
-                    <div class="testimonial-img position-relative">
-                        <img class="img-fluid rounded-circle mx-auto mb-5" src="img/testimonial-1.jpg">
-                        <div class="btn-square bg-primary rounded-circle">
-                            <i class="fa fa-quote-left text-white"></i>
-                        </div>
-                    </div>
-                    <div class="testimonial-text text-center rounded p-4">
-                        <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.
-                        </p>
-                        <h5 class="mb-1">Client Name</h5>
-                        <span class="fst-italic">Profession</span>
-                    </div>
-                </div>
-                <div class="testimonial-item text-center">
-                    <div class="testimonial-img position-relative">
-                        <img class="img-fluid rounded-circle mx-auto mb-5" src="img/testimonial-2.jpg">
-                        <div class="btn-square bg-primary rounded-circle">
-                            <i class="fa fa-quote-left text-white"></i>
-                        </div>
-                    </div>
-                    <div class="testimonial-text text-center rounded p-4">
-                        <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.
-                        </p>
-                        <h5 class="mb-1">Client Name</h5>
-                        <span class="fst-italic">Profession</span>
-                    </div>
-                </div>
-                <div class="testimonial-item text-center">
-                    <div class="testimonial-img position-relative">
-                        <img class="img-fluid rounded-circle mx-auto mb-5" src="img/testimonial-3.jpg">
-                        <div class="btn-square bg-primary rounded-circle">
-                            <i class="fa fa-quote-left text-white"></i>
-                        </div>
-                    </div>
-                    <div class="testimonial-text text-center rounded p-4">
-                        <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.
-                        </p>
-                        <h5 class="mb-1">Client Name</h5>
-                        <span class="fst-italic">Profession</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Testimonial End -->
-
     <!-- Contact Start -->
     <div class="container-xxl py-5">
         <div class="container">
@@ -498,10 +387,9 @@
                             <i class="fa fa-phone-alt fa-2x text-primary"></i>
                         </div>
                         <h4 class="mb-3">Телефоны</h4>
-                        <p class="mb-2">+7 968 265 90 13</p>
-                        <p class="mb-4">+7 968 265 90 14</p>
-                        <a class="btn btn-primary px-4" href="tel:+0123456789">Позвонить <i
-                                class="fa fa-arrow-right ms-2"></i></a>
+                        <p class="mb-2"><?php echo $db->getField("phone") ?></p>
+                        <!-- <p class="mb-4">+7 968 265 90 14</p> -->
+                        <a class="btn btn-primary px-4" href="tel:+0123456789">Позвонить <i class="fa fa-arrow-right ms-2"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
@@ -510,10 +398,9 @@
                             <i class="fa-brands fa-telegram fa-2x text-primary"></i>
                         </div>
                         <h4 class="mb-3">Telegram</h4>
-                        <p class="mb-2">@stroy_kompaniya</p>
-                        <p class="mb-2">@stroy_kompaniya_2</p>
-                        <a class="btn btn-primary px-4" href="mailto:info@example.com">Написать <i
-                                class="fa fa-arrow-right ms-2"></i></a>
+                        <p class="mb-2"><?php echo $db->getField("telegram") ?></p>
+                        <!-- <p class="mb-2">@stroy_kompaniya_2</p> -->
+                        <a class="btn btn-primary px-4" href="mailto:info@example.com">Написать <i class="fa fa-arrow-right ms-2"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
@@ -522,16 +409,15 @@
                             <i class="fa fa-map-marker-alt fa-2x text-primary"></i>
                         </div>
                         <h4 class="mb-3">Адрес</h4>
-                        <p class="mb-2">Московская область</p>
-                        <p class="mb-4">г Москова</p>
+                        <p class="mb-2"><?php echo $db->getField("address") ?></p>
+                        <!-- <p class="mb-4">г Москова</p> -->
                         <a class="btn btn-primary px-4" href="https://goo.gl/maps/FsznshxgnULBGgkN9" target="blank">На карте <i class="fa fa-arrow-right ms-2"></i></a>
                     </div>
                 </div>
             </div>
             <div class="row mb-5">
                 <div class="col-12 wow fadeInUp" data-wow-delay="0.1s">
-                    <iframe class="w-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10324.424845341035!2d37.570046238767205!3d55.724038369885236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54afc73d4b0c9%3A0x3d44d6cc5757cf4c!2sMoscow!5e0!3m2!1sen!2sru!4v1682003776136!5m2!1sen!2sru"
-                        style="min-height: 450px; border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe class="w-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10324.424845341035!2d37.570046238767205!3d55.724038369885236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54afc73d4b0c9%3A0x3d44d6cc5757cf4c!2sMoscow!5e0!3m2!1sen!2sru!4v1682003776136!5m2!1sen!2sru" style="min-height: 450px; border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
             <div class="row g-5">
@@ -547,7 +433,7 @@
                                 </div>
                                 <div class="ms-3">
                                     <h6>Позвините</h6>
-                                    <span>+7 968 265 90 13</span>
+                                    <span><?php echo $db->getField("phone") ?></span>
                                 </div>
                             </div>
                         </div>
@@ -598,25 +484,21 @@
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
                     <h5 class="text-white mb-4">Контакты</h5>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Московская область, д233</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+7 968 265 90 13</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>stroy_kompaniya@gmail.com</p>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i><?php echo $db->getField("address") ?></p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i><?php echo $db->getField("phone") ?></p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i><?php echo $db->getField("mail") ?></p>
                     <div class="d-flex pt-3">
-                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
-                                class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
-                                class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
-                                class="fab fa-youtube"></i></a>
-                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
-                                class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h5 class="text-white mb-4">Ссылки</h5>
-                    <a class="btn btn-link" href="">Бытовки</a>
-                    <a class="btn btn-link" href="">Хозблоки</a>
-                    <a class="btn btn-link" href="">Душ и туалет</a>
+                    <?php foreach ($db->getAllServices() as $item) : ?>
+                        <a class="btn btn-link" href=""><?php echo $item["name"] ?></a>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
@@ -639,8 +521,7 @@
 
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i
-            class="bi bi-arrow-up"></i></a>
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
 
 
     <!-- JavaScript Libraries -->
