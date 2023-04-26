@@ -4,7 +4,7 @@
     --primary: #FF5E14;
     --secondary: #5F656F;
     --light: #F5F5F5;
-    --dark: #02245B;
+    --dark: #745039;
 }
 
 .back-to-top {
@@ -204,7 +204,7 @@ h6,
     bottom: 0;
     display: flex;
     align-items: center;
-    background: linear-gradient(to right, rgba(2, 36, 91, 1) 0%, rgba(2, 36, 91, 0) 100%);
+    background: linear-gradient(to right, rgb(152, 66, 23, 0) 0%, rgb(152, 66, 23, 0) 100%);
     z-index: 1;
 }
 
@@ -236,7 +236,7 @@ h6,
 }
 
 .page-header {
-    background: linear-gradient(to right, rgba(2, 36, 91, 1) 0%, rgba(2, 36, 91, 0) 100%), url(../img/carousel-2.jpg) center center no-repeat;
+    background: linear-gradient(to right, rgba(2, 36, 91, 1) 0%, rgba(2, 36, 91, 0) 100%), url(../img/bitovka.jpeg) center center no-repeat;
     background-size: cover;
 }
 

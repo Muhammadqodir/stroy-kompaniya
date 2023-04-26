@@ -15,18 +15,27 @@ if (
   isset($_POST["description"]) &&
   isset($_POST["category"]) &&
   isset($_POST["price"]) &&
-  isset($_FILES["photo"])
+  isset($_FILES["photo1"]) &&
+  isset($_FILES["photo2"]) &&
+  isset($_FILES["photo3"]) &&
+  isset($_FILES["photo4"])
 ) {
   if (
     $_POST["title"] != "" &&
     $_POST["description"] != "" &&
     $_POST["category"] != "" &&
     $_POST["price"] != "" &&
-    !empty($_FILES["photo"]["name"])
+    !empty($_FILES["photo1"]["name"]) &&
+    !empty($_FILES["photo2"]["name"]) &&
+    !empty($_FILES["photo3"]["name"]) &&
+    !empty($_FILES["photo4"]["name"])
   ) {
-    uploadImage();
+    uploadImage("photo1");
+    uploadImage("photo2");
+    uploadImage("photo3");
+    uploadImage("photo4");
     $db = new DBHelper();
-    $task = $db->newMenuPosition($_POST["title"], $_POST["description"], $_POST["price"], $_POST["category"], $base_url. "uploads/" . getFileName() . '.jpg');
+    $task = $db->newMenuPosition($_POST["title"], $_POST["description"], $_POST["price"], $_POST["category"], getImgs($base_url));
     goToRoute("menu");
   } else {
     goBackWithMessage("Заполните все поля!");
@@ -35,19 +44,28 @@ if (
   goBackWithMessage("Неверный формат запроса!");
 }
 
+function getImgs($url){
+  $res = [
+    $url. "uploads/" . getFileName() . 'photo1.jpg',
+    $url. "uploads/" . getFileName() . 'photo2.jpg',
+    $url. "uploads/" . getFileName() . 'photo3.jpg',
+    $url. "uploads/" . getFileName() . 'photo4.jpg',
+  ];
+  return json_encode($res);
+}
 
-function uploadImage()
+function uploadImage($key_img)
 {
   $uploadPath = "../../uploads/";
-  $imageUploadPath = $uploadPath . getFileName() . '.jpg';
+  $imageUploadPath = $uploadPath . getFileName().$key_img . '.jpg';
   $fileType = pathinfo($imageUploadPath, PATHINFO_EXTENSION);
 
   // Allow certain file formats 
   $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
   if (in_array($fileType, $allowTypes)) {
     // Image temp source and size 
-    $imageTemp = $_FILES["photo"]["tmp_name"];
-    $imageSize = convert_filesize($_FILES["photo"]["size"]);
+    $imageTemp = $_FILES[$key_img]["tmp_name"];
+    $imageSize = convert_filesize($_FILES[$key_img]["size"]);
 
     // Compress size and upload image 
     $compressedImage = compressImage($imageTemp, $imageUploadPath);

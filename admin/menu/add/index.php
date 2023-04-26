@@ -78,7 +78,7 @@ if (!isset($_SESSION["is_login"])) {
       </div>
       <div class="row">
         <div class="col-md-4 col-lg-2">
-          <img class="file_preview" src="../../placeholder.png" id="img_preview">
+          <img class="file_preview" src="../../placeholder.png" id="img_preview1">
         </div>
         <div class="col-md-8 col-lg-10">
 
@@ -86,13 +86,69 @@ if (!isset($_SESSION["is_login"])) {
             <label for="photo">Фото</label>
             <div class="input-group mb-3">
               <div class="custom-file">
-                <input type="file" accept="image/*" onchange="previewImage()" class="custom-file-input" id="photo" name="photo">
+                <input type="file" accept="image/*" onchange="previewImage(1)" class="custom-file-input" id="photo1" name="photo1">
                 <label class="custom-file-label" for="photo">Выберите фото</label>
               </div>
             </div>
           </div>
         </div>
       </div>
+      
+
+      <div class="row">
+        <div class="col-md-4 col-lg-2">
+          <img class="file_preview" src="../../placeholder.png" id="img_preview2">
+        </div>
+        <div class="col-md-8 col-lg-10">
+
+          <div class="form-group">
+            <label for="photo">Фото</label>
+            <div class="input-group mb-3">
+              <div class="custom-file">
+                <input type="file" accept="image/*" onchange="previewImage(2)" class="custom-file-input" id="photo2" name="photo2">
+                <label class="custom-file-label" for="photo">Выберите фото</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 col-lg-2">
+          <img class="file_preview" src="../../placeholder.png" id="img_preview3">
+        </div>
+        <div class="col-md-8 col-lg-10">
+
+          <div class="form-group">
+            <label for="photo">Фото</label>
+            <div class="input-group mb-3">
+              <div class="custom-file">
+                <input type="file" accept="image/*" onchange="previewImage(3)" class="custom-file-input" id="photo3" name="photo3">
+                <label class="custom-file-label" for="photo">Выберите фото</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 col-lg-2">
+          <img class="file_preview" src="../../placeholder.png" id="img_preview4">
+        </div>
+        <div class="col-md-8 col-lg-10">
+
+          <div class="form-group">
+            <label for="photo">Фото</label>
+            <div class="input-group mb-3">
+              <div class="custom-file">
+                <input type="file" accept="image/*" onchange="previewImage(4)" class="custom-file-input" id="photo4" name="photo4">
+                <label class="custom-file-label" for="photo">Выберите фото</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div style="text-align: end;">
         <button type="submit" class="btn btn-success"><i class="fa-solid fa-plus"></i> Добавить</button>
       </div>
@@ -101,12 +157,12 @@ if (!isset($_SESSION["is_login"])) {
 
 
   <script>
-    function previewImage() {
+    function previewImage(id) {
       var oFReader = new FileReader();
-      oFReader.readAsDataURL(document.getElementById("photo").files[0]);
+      oFReader.readAsDataURL(document.getElementById("photo"+id).files[0]);
 
       oFReader.onload = function(oFREvent) {
-        document.getElementById("img_preview").src = oFREvent.target.result;
+        document.getElementById("img_preview"+id).src = oFREvent.target.result;
       };
     };
   </script>

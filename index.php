@@ -8,7 +8,7 @@ $db = new DBHelper();
 
 <head>
     <meta charset="utf-8">
-    <title>СтройКомпания - Бытовки и хозблоки</title>
+    <title>Строй-Компания - Бытовки и хозблоки</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -51,10 +51,9 @@ $db = new DBHelper();
             <div class="col-lg-6 ps-5 text-start">
                 <div class="h-100 d-inline-flex align-items-center text-white">
                     <span>Мы в соц. сетях:</span>
-                    <a class="btn btn-link text-light" href=""><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-link text-light" href=""><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-link text-light" href=""><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-link text-light" href=""><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-link text-light" href="https://www.avito.ru/user/ca2c4d8d939260746db2970eba9523d6/profile?src=sharing"><img src="https://free-png.ru/wp-content/uploads/2021/11/free-png.ru-480-340x340.png" width="20"></a>
+                    <a class="btn btn-link text-light" href="https://t.me/<?php echo str_replace("@", "", $db->getField("telegram")) ?>"><i class="fa-brands fa-telegram"></i></a>
+                    <a class="btn btn-link text-light" href="https://wa.me/<?php echo str_replace(" ", "", $db->getField("phone")) ?>"><i class="fa-brands fa-square-whatsapp"></i></a>
                 </div>
             </div>
             <div class="col-lg-6 text-end">
@@ -67,8 +66,8 @@ $db = new DBHelper();
     </div>
     <!-- Topbar End -->
 
-    
-  <?php include("nav.php") ?>
+
+    <?php include("nav.php") ?>
 
 
     <!-- Carousel Start -->
@@ -76,28 +75,78 @@ $db = new DBHelper();
         <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="w-100" src="img/carousel-1.jpg" alt="Image">
+                    <img class="w-100" src="<?php echo $db->getField("pic1") ?>" alt="Image">
                     <div class="carousel-caption">
                         <div class="container">
                             <div class="row justify-content-center">
                                 <div class="col-lg-10 text-start">
                                     <p class="fs-5 fw-medium text-primary text-uppercase animated slideInRight">15 лет опыта работы</p>
                                     <h1 class="display-1 text-white mb-5 animated slideInRight">ХОЗБЛОКИ и БЫТОВКИ для дачи в МОСКВЕ и МО</h1>
-                                    <a href="" class="btn btn-primary py-3 px-5 animated slideInRight">Заказать</a>
+                                    <a href="https://wa.me/<?php echo str_replace(" ", "", $db->getField("phone")) ?>" class="btn btn-primary py-3 px-5 animated slideInRight">Заказать </a>
+                                    <a href="tel:<?php echo str_replace(" ", "", $db->getField("phone")) ?>" class="btn btn-primary py-3 px-5 animated slideInRight">Позвонить</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <img class="w-100" src="img/carousel-2.jpg" alt="Image">
+                <div class="carousel-item ">
+                    <img class="w-100" src="<?php echo $db->getField("pic2") ?>" alt="Image">
                     <div class="carousel-caption">
                         <div class="container">
                             <div class="row justify-content-center">
                                 <div class="col-lg-10 text-start">
                                     <p class="fs-5 fw-medium text-primary text-uppercase animated slideInRight">15 лет опыта работы</p>
                                     <h1 class="display-1 text-white mb-5 animated slideInRight">ХОЗБЛОКИ и БЫТОВКИ для дачи в МОСКВЕ и МО</h1>
-                                    <a href="" class="btn btn-primary py-3 px-5 animated slideInRight">Заказать</a>
+                                    <a href="https://wa.me/<?php echo str_replace(" ", "", $db->getField("phone")) ?>" class="btn btn-primary py-3 px-5 animated slideInRight">Заказать </a>
+                                    <a href="tel:<?php echo str_replace(" ", "", $db->getField("phone")) ?>" class="btn btn-primary py-3 px-5 animated slideInRight">Позвонить</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item ">
+                    <img class="w-100" src="<?php echo $db->getField("pic3") ?>" alt="Image">
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-10 text-start">
+                                    <p class="fs-5 fw-medium text-primary text-uppercase animated slideInRight">15 лет опыта работы</p>
+                                    <h1 class="display-1 text-white mb-5 animated slideInRight">ХОЗБЛОКИ и БЫТОВКИ для дачи в МОСКВЕ и МО</h1>
+                                    <a href="https://wa.me/<?php echo str_replace(" ", "", $db->getField("phone")) ?>" class="btn btn-primary py-3 px-5 animated slideInRight">Заказать </a>
+                                    <a href="tel:<?php echo str_replace(" ", "", $db->getField("phone")) ?>" class="btn btn-primary py-3 px-5 animated slideInRight">Позвонить</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item ">
+                    <img class="w-100" src="<?php echo $db->getField("pic4") ?>" alt="Image">
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-10 text-start">
+                                    <p class="fs-5 fw-medium text-primary text-uppercase animated slideInRight">15 лет опыта работы</p>
+                                    <h1 class="display-1 text-white mb-5 animated slideInRight">ХОЗБЛОКИ и БЫТОВКИ для дачи в МОСКВЕ и МО</h1>
+                                    <a href="https://wa.me/<?php echo str_replace(" ", "", $db->getField("phone")) ?>" class="btn btn-primary py-3 px-5 animated slideInRight">Заказать </a>
+                                    <a href="tel:<?php echo str_replace(" ", "", $db->getField("phone")) ?>" class="btn btn-primary py-3 px-5 animated slideInRight">Позвонить</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item ">
+                    <img class="w-100" src="<?php echo $db->getField("pic5") ?>" alt="Image">
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-10 text-start">
+                                    <p class="fs-5 fw-medium text-primary text-uppercase animated slideInRight">15 лет опыта работы</p>
+                                    <h1 class="display-1 text-white mb-5 animated slideInRight">ХОЗБЛОКИ и БЫТОВКИ для дачи в МОСКВЕ и МО</h1>
+                                    <a href="https://wa.me/<?php echo str_replace(" ", "", $db->getField("phone")) ?>" class="btn btn-primary py-3 px-5 animated slideInRight">Заказать </a>
+                                    <a href="tel:<?php echo str_replace(" ", "", $db->getField("phone")) ?>" class="btn btn-primary py-3 px-5 animated slideInRight">Позвонить</a>
                                 </div>
                             </div>
                         </div>
@@ -124,16 +173,16 @@ $db = new DBHelper();
                 <div class="col-lg-6">
                     <div class="row gx-3 h-100">
                         <div class="col-6 align-self-start wow fadeInUp" data-wow-delay="0.1s">
-                            <img class="img-fluid" src="img/about-1.jpg">
+                            <img class="img-fluid" src="img/about-3.png">
                         </div>
                         <div class="col-6 align-self-end wow fadeInDown" data-wow-delay="0.1s">
-                            <img class="img-fluid" src="img/about-2.jpg">
+                            <img class="img-fluid" src="img/about-4.png">
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                     <p class="fw-medium text-uppercase text-primary mb-2">О нас</p>
-                    <h1 class="display-5 mb-4">СтройКомпания</h1>
+                    <h1 class="display-5 mb-4">Строй-Компания</h1>
                     <p class="mb-4">Работаем в этой сфере 13 лет. Все наши плотники и строители имеют высокую квалификацию.
                     </p>
                     <div class="d-flex align-items-center mb-4">
@@ -389,7 +438,7 @@ $db = new DBHelper();
                         <h4 class="mb-3">Телефоны</h4>
                         <p class="mb-2"><?php echo $db->getField("phone") ?></p>
                         <!-- <p class="mb-4">+7 968 265 90 14</p> -->
-                        <a class="btn btn-primary px-4" href="tel:+0123456789">Позвонить <i class="fa fa-arrow-right ms-2"></i></a>
+                        <a class="btn btn-primary px-4" href="tel:<?php echo str_replace(" ", "", $db->getField("phone")) ?>">Позвонить <i class="fa fa-arrow-right ms-2"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
@@ -400,7 +449,7 @@ $db = new DBHelper();
                         <h4 class="mb-3">Telegram</h4>
                         <p class="mb-2"><?php echo $db->getField("telegram") ?></p>
                         <!-- <p class="mb-2">@stroy_kompaniya_2</p> -->
-                        <a class="btn btn-primary px-4" href="mailto:info@example.com">Написать <i class="fa fa-arrow-right ms-2"></i></a>
+                        <a class="btn btn-primary px-4" href="https://t.me/<?php echo str_replace("@", "", $db->getField("telegram")) ?>">Написать <i class="fa fa-arrow-right ms-2"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
@@ -411,20 +460,20 @@ $db = new DBHelper();
                         <h4 class="mb-3">Адрес</h4>
                         <p class="mb-2"><?php echo $db->getField("address") ?></p>
                         <!-- <p class="mb-4">г Москова</p> -->
-                        <a class="btn btn-primary px-4" href="https://goo.gl/maps/FsznshxgnULBGgkN9" target="blank">На карте <i class="fa fa-arrow-right ms-2"></i></a>
+                        <!-- <a class="btn btn-primary px-4" href="https://goo.gl/maps/FsznshxgnULBGgkN9" target="blank">На карте <i class="fa fa-arrow-right ms-2"></i></a> -->
                     </div>
                 </div>
             </div>
             <div class="row mb-5">
                 <div class="col-12 wow fadeInUp" data-wow-delay="0.1s">
-                    <iframe class="w-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10324.424845341035!2d37.570046238767205!3d55.724038369885236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54afc73d4b0c9%3A0x3d44d6cc5757cf4c!2sMoscow!5e0!3m2!1sen!2sru!4v1682003776136!5m2!1sen!2sru" style="min-height: 450px; border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/213/moscow/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Москва</a><a href="https://yandex.ru/maps/213/moscow/house/ulitsa_admirala_kornilova_63/Z04YcgNhTUYGQFtvfXpzcn1qZw==/?ll=37.441658%2C55.623440&utm_medium=mapframe&utm_source=maps&z=17.95" style="color:#eee;font-size:12px;position:absolute;top:14px;">Улица Адмирала Корнилова, 63 — Яндекс Карты</a><iframe src="https://yandex.ru/map-widget/v1/?ll=37.441658%2C55.623440&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgo0MDAyMTQzMzgwEnfQoNC-0YHRgdC40Y8sINCc0L7RgdC60LLQsCwg0L_QvtGB0LXQu9C10L3QuNC1INCc0L7RgdGA0LXQvdGC0LPQtdC9LCDRg9C70LjRhtCwINCQ0LTQvNC40YDQsNC70LAg0JrQvtGA0L3QuNC70L7QstCwLCA2MyIKDQfEFUIVJ35eQg%2C%2C&z=17.95" class="w-100" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>
+                    <!-- <iframe class="w-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10324.424845341035!2d37.570046238767205!3d55.724038369885236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54afc73d4b0c9%3A0x3d44d6cc5757cf4c!2sMoscow!5e0!3m2!1sen!2sru!4v1682003776136!5m2!1sen!2sru" style="min-height: 450px; border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
                 </div>
             </div>
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                     <p class="fw-medium text-uppercase text-primary mb-2">Свяжитесь с нами</p>
                     <h1 class="display-5 mb-4">Если у вас есть какие-либо вопросы, пожалуйста, свяжитесь с нами</h1>
-
                     <div class="row g-4">
                         <div class="col-12">
                             <div class="d-flex">
@@ -488,10 +537,10 @@ $db = new DBHelper();
                     <p class="mb-2"><i class="fa fa-phone-alt me-3"></i><?php echo $db->getField("phone") ?></p>
                     <p class="mb-2"><i class="fa fa-envelope me-3"></i><?php echo $db->getField("mail") ?></p>
                     <div class="d-flex pt-3">
-                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-square btn-primary rounded-circle me-2" href="https://www.avito.ru/user/ca2c4d8d939260746db2970eba9523d6/profile?src=sharing"><img src="https://free-png.ru/wp-content/uploads/2021/11/free-png.ru-480-340x340.png" width="20"></a>
+                        <a class="btn btn-square btn-primary rounded-circle me-2" href="https://t.me/<?php echo str_replace("@", "", $db->getField("telegram")) ?>"><i class="fa-brands fa-telegram"></i></a>
+                        <a class="btn btn-square btn-primary rounded-circle me-2" href="https://wa.me/<?php echo str_replace(" ", "", $db->getField("phone")) ?>"><i class="fa-brands fa-square-whatsapp"></i></a>
+
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">

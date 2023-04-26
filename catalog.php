@@ -65,10 +65,9 @@ if (isset($_GET["category"])) {
       <div class="col-lg-6 ps-5 text-start">
         <div class="h-100 d-inline-flex align-items-center text-white">
           <span>Мы в соц. сетях:</span>
-          <a class="btn btn-link text-light" href=""><i class="fab fa-facebook-f"></i></a>
-          <a class="btn btn-link text-light" href=""><i class="fab fa-twitter"></i></a>
-          <a class="btn btn-link text-light" href=""><i class="fab fa-linkedin-in"></i></a>
-          <a class="btn btn-link text-light" href=""><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-link text-light" href="https://www.avito.ru/user/ca2c4d8d939260746db2970eba9523d6/profile?src=sharing"><img src="https://free-png.ru/wp-content/uploads/2021/11/free-png.ru-480-340x340.png" width="20"></a>
+                    <a class="btn btn-link text-light" href="https://t.me/<?php echo str_replace("@", "", $db->getField("telegram")) ?>"><i class="fa-brands fa-telegram"></i></a>
+                    <a class="btn btn-link text-light" href="https://wa.me/<?php echo str_replace(" ", "", $db->getField("phone")) ?>"><i class="fa-brands fa-square-whatsapp"></i></a>
         </div>
       </div>
       <div class="col-lg-6 text-end">
@@ -99,7 +98,8 @@ if (isset($_GET["category"])) {
               <small id="emailHelp" class="form-text text-muted">Оставьте свои контакты и мы свяжемся с вами в ближайшее время</small>
             </div>
             <div style="text-align: center; margin-top: 18px;">
-            <button type="submit" class="btn btn-primary">Заказать</button></div>
+              <button type="submit" class="btn btn-primary">Заказать</button>
+            </div>
           </form>
         </div>
       </div>
@@ -131,13 +131,39 @@ if (isset($_GET["category"])) {
         <?php foreach ($products as $item) : ?>
           <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
             <div class="team-item">
-              <img class="img-fluid" src="<?php echo $item["pic"] ?>" alt="">
+
+              <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img class="img-fluid" src="<?php echo json_decode($item["pic"], true)[0] ?>" alt="First slide">
+                  </div>
+                  <div class="carousel-item ">
+                    <img class="img-fluid" src="<?php echo json_decode($item["pic"], true)[1] ?>" alt="First slide">
+                  </div>
+                  <div class="carousel-item ">
+                    <img class="img-fluid" src="<?php echo json_decode($item["pic"], true)[2] ?>" alt="First slide">
+                  </div>
+                  <div class="carousel-item ">
+                    <img class="img-fluid" src="<?php echo json_decode($item["pic"], true)[3] ?>" alt="First slide">
+                  </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+
               <div class="bg-light" style="padding: 24px;">
                 <h3> <?php echo $item["title"] ?></h3>
                 <?php echo $item["description"] ?>
                 <h4> <?php echo $item["price"] ?> руб</h4>
               </div>
-              <button data-bs-toggle="modal" data-bs-target="#contactModal" style="width: 100%;" class="btn btn-primary">Заказать</button>
+              <a href="https://wa.me/<?php echo str_replace(" ", "", $db->getField("phone")) ?>" style="width: 100%;" class="btn btn-primary">Заказать <i class="fa-brands fa-square-whatsapp"></i></a>
+
             </div>
           </div>
         <?php endforeach; ?>
@@ -158,10 +184,9 @@ if (isset($_GET["category"])) {
           <p class="mb-2"><i class="fa fa-phone-alt me-3"></i><?php echo $db->getField("phone") ?></p>
           <p class="mb-2"><i class="fa fa-envelope me-3"></i><?php echo $db->getField("mail") ?></p>
           <div class="d-flex pt-3">
-            <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i class="fab fa-twitter"></i></a>
-            <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i class="fab fa-facebook-f"></i></a>
-            <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i class="fab fa-youtube"></i></a>
-            <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-square btn-primary rounded-circle me-2" href="https://www.avito.ru/user/ca2c4d8d939260746db2970eba9523d6/profile?src=sharing"><img src="https://free-png.ru/wp-content/uploads/2021/11/free-png.ru-480-340x340.png" width="20"></a>
+                        <a class="btn btn-square btn-primary rounded-circle me-2" href="https://t.me/<?php echo str_replace("@", "", $db->getField("telegram")) ?>"><i class="fa-brands fa-telegram"></i></a>
+                        <a class="btn btn-square btn-primary rounded-circle me-2" href="https://wa.me/<?php echo str_replace(" ", "", $db->getField("phone")) ?>"><i class="fa-brands fa-square-whatsapp"></i></a>
           </div>
         </div>
         <div class="col-lg-3 col-md-6">

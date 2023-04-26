@@ -39,7 +39,30 @@ if (!isset($_SESSION["is_login"])) {
       <?php foreach ($db->getAllMenu() as $item) : ?>
         <div class="col-lg-4 col-md-6">
           <div class="card menu_item" style="width: 100%;">
-            <img class="card-img-top menu_img" src="<?php echo $item["pic"] ?>" alt="Card image cap">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img class="card-img-top menu_img" src="<?php echo json_decode($item["pic"], true)[0] ?>" alt="First slide">
+                </div>
+                <div class="carousel-item ">
+                  <img class="card-img-top menu_img" src="<?php echo json_decode($item["pic"], true)[1] ?>" alt="First slide">
+                </div>
+                <div class="carousel-item ">
+                  <img class="card-img-top menu_img" src="<?php echo json_decode($item["pic"], true)[2] ?>" alt="First slide">
+                </div>
+                <div class="carousel-item ">
+                  <img class="card-img-top menu_img" src="<?php echo json_decode($item["pic"], true)[3] ?>" alt="First slide">
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
             <div class="card-body">
               <h5 class="card-title menu_title"><?php echo $item["title"] ?></h5>
               <span class="badge badge-success"><?php echo $db->getService($item["category"])["name"] ?></span><br>
@@ -76,13 +99,14 @@ if (!isset($_SESSION["is_login"])) {
 
   <script>
     var selectedId = -1;
-    function showConfirmDialog(id){
+
+    function showConfirmDialog(id) {
       selectedId = id;
       $('#removeConfirmation').modal('toggle');
     }
 
-    function remove(){
-      window.location.href = '<?php echo getRoute("menu/remove_position.php?id=") ?>'+selectedId;
+    function remove() {
+      window.location.href = '<?php echo getRoute("menu/remove_position.php?id=") ?>' + selectedId;
     }
   </script>
 
