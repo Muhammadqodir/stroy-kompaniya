@@ -43,6 +43,7 @@ if (isset($_GET["category"])) {
   <!-- Libraries Stylesheet -->
   <link href="lib/animate/animate.min.css" rel="stylesheet">
   <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="admin/css/dashboard.css"rel="stylesheet">
 
   <!-- Customized Bootstrap Stylesheet -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -132,26 +133,26 @@ if (isset($_GET["category"])) {
           <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
             <div class="team-item">
 
-              <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+              <div id="carouselExampleControls<?php echo array_search($item, $products) ?>" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img class="img-fluid" src="<?php echo json_decode($item["pic"], true)[0] ?>" alt="First slide">
+                  <div class="carousel-item menu_img active">
+                    <img width="100%" src="<?php echo json_decode($item["pic"], true)[0] ?>" alt="First slide">
                   </div>
-                  <div class="carousel-item ">
-                    <img class="img-fluid" src="<?php echo json_decode($item["pic"], true)[1] ?>" alt="First slide">
+                  <div class="carousel-item menu_img">
+                    <img width="100%" src="<?php echo json_decode($item["pic"], true)[1] ?>" alt="First slide">
                   </div>
-                  <div class="carousel-item ">
-                    <img class="img-fluid" src="<?php echo json_decode($item["pic"], true)[2] ?>" alt="First slide">
+                  <div class="carousel-item menu_img">
+                    <img width="100%" src="<?php echo json_decode($item["pic"], true)[2] ?>" alt="First slide">
                   </div>
-                  <div class="carousel-item ">
-                    <img class="img-fluid" src="<?php echo json_decode($item["pic"], true)[3] ?>" alt="First slide">
+                  <div class="carousel-item menu_img">
+                    <img width="100%" src="<?php echo json_decode($item["pic"], true)[3] ?>" alt="First slide">
                   </div>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+                <a class="carousel-control-prev" href="#carouselExampleControls<?php echo array_search($item, $products) ?>" role="button" data-bs-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                   <span class="sr-only">Previous</span>
                 </a>
-                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+                <a class="carousel-control-next" href="#carouselExampleControls<?php echo array_search($item, $products) ?>" role="button" data-bs-slide="next">
                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
                   <span class="sr-only">Next</span>
                 </a>
